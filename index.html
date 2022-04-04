@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Generate | Random Password</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
@@ -15,7 +15,10 @@
                 <div>
                     <h1>Generate a <br><span>random password</span></h1>
                     <p>Never use an insecure password again.</p>
-                    <button><i class="fas fa-bolt"></i> Generate passwords</button>
+                    <div id="btn-message">
+                        <button id="btn"><i class="fas fa-bolt"></i> Generate passwords</button>
+                        <span id="custom-tooltip">Copied!</span>
+                    </div>
                 </div>
                 <div class="toggle">
                 <input type="checkbox" class="checkbox" id="check" />
@@ -27,10 +30,10 @@
                 </div>
             </div>
             <div id="password-area">
-                <div class="pwd"><i class="fas fa-ellipsis"></i></div>
-                <div class="pwd"><i class="fas fa-ellipsis"></i></div>
-                <div class="pwd"><i class="fas fa-ellipsis"></i></div>
-                <div class="pwd"><i class="fas fa-ellipsis"></i></div>
+                <div class="pwd" id="pwd1"><i class="fas fa-ellipsis"></i></div>
+                <div class="pwd" id="pwd2"><i class="fas fa-ellipsis"></i></div>
+                <div class="pwd" id="pwd3"><i class="fas fa-ellipsis"></i></div>
+                <div class="pwd" id="pwd4"><i class="fas fa-ellipsis"></i></div>
             </div>
         </div>
         <script src="gen.js" async defer></script>

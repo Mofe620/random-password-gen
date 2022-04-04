@@ -114,12 +114,32 @@ button i {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Inter', sans-serif;
+    color: #5DEF92;
 }
 .pwd i {
     font-size: 1.5rem;
     color:  #9CA3AF;
 }
-
+#btn-message {
+    display: flex;
+}
+#custom-tooltip {
+    display: none;
+    color: #10B981;
+    margin-top: 0;
+    margin-left: 1em;
+    padding: 0;
+    height: 1em;
+    font-size: 1rem;
+}
+.fade {
+    animation: fadeOut 3s ease;
+}
+@keyframes fadeOut {
+	0% {opacity:100;}
+	100% {opacity:0;}
+  }
 /*DARK THEME*/
 body.dark {
     background-color: #1F2937;
@@ -140,7 +160,8 @@ body.dark .ball {
     background-color: #10B981;
 }
 body.dark .pwd {
-    background-color: #273549;;
+    background-color: #273549;
+    color: #55F991;
 }
 body.dark .pwd i {
     color: #161515b6;

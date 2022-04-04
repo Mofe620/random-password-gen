@@ -87,6 +87,7 @@ button {
     color: white;
     font-family: 'Inter', sans-serif;
     margin-bottom: 2em;
+    cursor: pointer;
 }
 button i {
     margin-right: 1em;
@@ -116,6 +117,7 @@ button i {
     align-items: center;
     font-family: 'Inter', sans-serif;
     color: #5DEF92;
+    cursor: pointer;
 }
 .pwd i {
     font-size: 1.5rem;

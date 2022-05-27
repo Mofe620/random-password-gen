@@ -1,10 +1,10 @@
 //TOGGLE THEME
-//document.body.classList.toggle('dark');
+document.body.classList.toggle('dark');
 const check = document.getElementById('check');
-// check.checked = true;
-// check.addEventListener('change', () => {
-// 	document.body.classList.toggle('dark');
-// });
+check.checked = true;
+check.addEventListener('change', () => {
+	document.body.classList.toggle('dark');
+});
 
 //RANDOM PASSWORD of 12 Characters
 var btn = document.querySelector('#btn');

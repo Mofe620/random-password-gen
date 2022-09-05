@@ -1,19 +1,36 @@
+a, a:hover, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
 body {
-    background-color: #ECFDF5;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: #6B7280;
 }
 .container {
-    width: 550px;
-    padding: 30px;
-    border: 2px solid #1F2937;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
 }
 .section-1 {
     display: flex;
     justify-content: space-between;
+    width: 70%;
 }
 
 /*Toggler Section*/
+.toggle {
+    align-self: flex-end;
+}
 .checkbox {
 	opacity: 0;
 	position: absolute;
@@ -38,18 +55,18 @@ body {
 	color: #f39c12;
 }
 .label .ball {
-	background-color: rgb(57, 56, 68);
+	background-color: #1F2937;
 	border-radius: 50%;
 	position: absolute;
-	top: 0px;
+	top: -1px;
 	left: 2px;
-	height: 20px;
-	width: 20px;
+	height: 22px;
+	width: 22px;
 	transform: translateX(0px);
 	transition: transform 0.2s linear;
 }
 .checkbox:checked + .label .ball {
-	transform: translateX(24px);
+	transform: translateX(22px);
 }
 /*End of Toggler Section*/
 
@@ -66,12 +83,6 @@ h1 span {
     color: #10B981;
 }
 p {
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 28px;
-    color: #6B7280;
     margin-top: 1em;
     margin-bottom: 1.5em;
 }
@@ -86,36 +97,64 @@ button {
     border-radius: 6px;
     color: white;
     font-family: 'Inter', sans-serif;
+    font-size: 1rem;
     margin-bottom: 2em;
     cursor: pointer;
 }
-button i {
-    margin-right: 1em;
+button svg {
+    margin-right: 0.5em;
+}
+.section-1b {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+div.options {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    padding-right: 0em;
+    margin-top: auto;
+}
+.option-item {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+.options label {
+    font-size: 1rem;
+}
+.options input[type=checkbox]:checked {
+	filter: invert(45%) sepia(96%) saturate(660%) hue-rotate(119deg) brightness(99%) contrast(87%);
+}
+input[type=number]{
+    max-width: 2.5em;
 }
 #password-area {
     border-top: 1px solid #2F3E53;
-    display: grid;
-    grid-template-columns: auto auto;
-    margin-bottom: 2em;
+    display: flex;
+    justify-content: space-between;
+    margin: 0em auto;
+    width: 70%;
 }
-@media (max-width:675px) {
-    #password-area {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 80%;
-    }
+.row-1, .row-2 {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .pwd {
     background:  #4B5563;
+    place-self: center;
     border-radius: 6px;
     width: 250px;
     height: 50px;
-    margin-top: 2em;
+    margin: 2em 0em;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Inter', sans-serif;
+    letter-spacing: 2px;
     color: #5DEF92;
     cursor: pointer;
 }
@@ -123,25 +162,55 @@ button i {
     font-size: 1.5rem;
     color:  #9CA3AF;
 }
-#btn-message {
-    display: flex;
-}
-#custom-tooltip {
-    display: none;
-    color: #10B981;
-    margin-top: 0;
-    margin-left: 1em;
-    padding: 0;
-    height: 1em;
-    font-size: 1rem;
-}
-.fade {
-    animation: fadeOut 3s ease;
-}
+
+/* MESSAGE SNACKBAR */
 @keyframes fadeOut {
 	0% {opacity:100;}
 	100% {opacity:0;}
   }
+  #snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #10B981;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+/* END OF MESSAGE SNACKBAR */
+
 /*DARK THEME*/
 body.dark {
     background-color: #1F2937;
@@ -155,9 +224,6 @@ body.dark p {
 body.dark h1 span {
     color: #4ADF86;
 }
-body.dark .container {
-    border: 2px solid #D5D4D8;
-}
 body.dark .ball {
     background-color: #10B981;
 }
@@ -167,4 +233,77 @@ body.dark .pwd {
 }
 body.dark .pwd i {
     color: #161515b6;
+}
+/* End of Dark Theme */
+footer {
+    color: #10B981;
+    text-align: center;
+    letter-spacing: 1.5px;
+    width: 100%;
+    margin-top: 1em;
+    font-weight: 500;
+}
+
+@media (max-width:675px) {
+    body {
+        max-width: 675px;
+    }
+    #password-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+    }
+}
+@media (max-width:500px) {
+    body {
+        max-width: 500px;
+        padding: 2em 0em 1em;
+    }
+    .section-1, #password-area {
+        width: 85%;
+    }
+    .section-1 {
+        flex-direction: column;
+    }
+    .section-1b {
+        width: 100%;
+    }
+    .toggle {
+        position: absolute;
+        top: 2em;
+    }
+    h1, span {
+        font-size: 2.2rem;
+    }
+    h1 {
+        margin-top: 1.5em;
+    }
+    div.options {
+        padding-left: 0em;
+        padding-top: 0em;
+    }
+    .options input {
+        margin-right: 0.75em;
+    }
+    .options .label {
+        margin-top: 3px;
+    }
+    .option-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .pwd {
+        margin: 1em 0;
+    }
+    #snackbar {
+        min-width: auto;
+        width: 60%;
+        left: 17%;
+        margin-left: 0;
+    }
+    footer {
+        font-size: 1.2rem;
+    }
 }

@@ -6,6 +6,7 @@ check.addEventListener('change', () => {
 	document.body.classList.toggle('dark');
 });
 
+
 //RANDOM PASSWORD of 12 Characters
 var btn = document.querySelector('#btn');
 var pwd1 = document.querySelector('#pwd1');
@@ -19,7 +20,13 @@ const chars = ['A','B','C','D','E','F','G','H','I','J','K','L','M',
              'n','o','p','q','r','s','t','u','v','w','x','y','z',
              '0','1','2','3','4','5','6','7','8','9',
              '!', '#', '$', '%', '&', '(',')','*','+'];
-
+const letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M',
+            'N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+            'a','b','c','d','e','f','g','h','i','j','k','l','m',
+            'n','o','p','q','r','s','t','u','v','w','x','y','z'];
+const lowercase = ['a','b','c','d','e','f','g','h','i','j','k','l','m',
+            'n','o','p','q','r','s','t','u','v','w','x','y','z'];
+const numbers = ['0','1','2','3','4','5','6','7','8','9'];
 
 btn.addEventListener("click", function(){
     //remove the ellipsis
@@ -44,16 +51,13 @@ btn.addEventListener("click", function(){
             range.selectNode(element);
             window.getSelection().removeAllRanges(); // clear current selection
             window.getSelection().addRange(range); // to select text
-            document.execCommand("copy");
+            navigator.clipboard.writeText(element.textContent);
             window.getSelection().removeAllRanges();// to deselect
+
             //display "copied" message
-            setTimeout( function() {
-                document.getElementById("custom-tooltip").style.display = "inline";
-            }, 500);
-            document.getElementById("custom-tooltip").setAttribute("class", "fade");
-            setTimeout( function() {
-                document.getElementById("custom-tooltip").style.display = "none";
-            }, 3000);
+            var messageBar = document.getElementById("snackbar");
+            messageBar.className = "show";
+            setTimeout(function(){ messageBar.className = messageBar.className.replace("show", ""); }, 3000);
         });
     });
     
@@ -61,7 +65,26 @@ btn.addEventListener("click", function(){
 
 //pick a random index of the chars array
 function randomChar(){
-    var pick = chars[Math.floor(Math.random()*chars.length)]; 
+    //selected option
+    var lowerCaseOnly = document.querySelector('#lowercase_only');
+    var numbersOnly = document.querySelector('#numbers');
+    var chosenCharset;
+
+    if (lowerCaseOnly.checked == true){
+        chosenCharset = lowercase;
+    }
+    if (numbersOnly.checked == true){
+        chosenCharset = numbers;
+    }
+    else if(!lowerCaseOnly.checked && !numbersOnly.checked){
+        chosenCharset = chars;
+    }
+    if(lowerCaseOnly.checked && numbersOnly.checked){
+        chosenCharset = lowercase.concat(numbers);
+    }
+
+    //console.log(chosenCharset);
+    var pick = chosenCharset[Math.floor(Math.random()*chosenCharset.length)]; 
     //console.log(pick)
     return pick; 
 }

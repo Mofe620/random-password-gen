@@ -6,36 +6,58 @@
         <title>Generate | Random Password</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="lock.png" type="image/x-icon">
         <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/17c47c1f0f.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="container">
             <div class="section-1">
-                <div>
+                <div class="section-1a">
                     <h1>Generate a <br><span>random password</span></h1>
                     <p>Never use an insecure password again.</p>
-                    <div id="btn-message">
-                        <button id="btn"><i class="fas fa-bolt"></i> Generate passwords</button>
-                        <span id="custom-tooltip">Copied!</span>
-                    </div>
+                    <button id="btn"><i class="fas fa-bolt"></i> Generate passwords</button>
                 </div>
-                <div class="toggle">
-                <input type="checkbox" class="checkbox" id="check" />
-                <label class="label" for="check">
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-sun"></i>
-                    <div class="ball"></div>
-                </label>
+                <div class="section-1b">
+                    <div class="toggle">
+                        <input type="checkbox" class="checkbox" id="check" />
+                        <label class="label" for="check">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                            <div class="ball"></div>
+                        </label>
+                    </div>
+                    <div class="options">
+                        <div class="option-item">
+                            <input type="checkbox" name="" id="numbers">
+                            <label for="numbers">Numbers only</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="checkbox" name="" id="lowercase_only">
+                            <label for="lowercase_only">Lowercase letters only</label>
+                        </div>
+                        <!-- <div class="option-item">
+                            <input type="number" max="12" placeholder="12" name="" id="length">
+                            <label for="length">Required length (Max. 12)</label>
+                        </div> -->
+                    </div>
                 </div>
             </div>
             <div id="password-area">
-                <div class="pwd" id="pwd1"><i class="fas fa-ellipsis"></i></div>
-                <div class="pwd" id="pwd2"><i class="fas fa-ellipsis"></i></div>
-                <div class="pwd" id="pwd3"><i class="fas fa-ellipsis"></i></div>
-                <div class="pwd" id="pwd4"><i class="fas fa-ellipsis"></i></div>
+                <div class="row-1">
+                    <div class="pwd" id="pwd1"><i class="fas fa-ellipsis"></i></div>
+                    <div class="pwd" id="pwd2"><i class="fas fa-ellipsis"></i></div>
+                </div>
+                <div class="row-2">
+                    <div class="pwd" id="pwd3"><i class="fas fa-ellipsis"></i></div>
+                    <div class="pwd" id="pwd4"><i class="fas fa-ellipsis"></i></div>
+                </div>
             </div>
+            <div id="snackbar">Copied to Clipboard</div>
         </div>
+        <footer>
+           <a href="https://scrimba.com/">Scrimba Solo Project </a> by <a href="https://github.com/Mofe620"> Mofe620</a>
+        </footer>
         <script src="gen.js" async defer></script>
     </body>
 </html>
